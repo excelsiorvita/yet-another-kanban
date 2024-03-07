@@ -25,7 +25,7 @@ export const ProtectedLayout: FC<ProtectedLayoutProps> = (props) => {
     if (isAxiosError(getPrincipal.error)) {
       const error = getPrincipal.error as AxiosError<any, any>
 
-      if (error.status === 401) {
+      if (error.response.status === 401) {
         log.debug(`[<ProtectedLayout/>]: User is not logged-in. Redirecting to '${redirectTo}' route...`)
         navigate(redirectTo);
       }
